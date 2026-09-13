@@ -1,0 +1,26 @@
+services:
+  wx-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wx-api:latest
+    container_name: wx-api
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./config/config.yaml:/app/config/config.yaml:ro
+    environment:
+      CONFIG_PATH: /app/config/config.yaml
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: wx-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  redis_data:

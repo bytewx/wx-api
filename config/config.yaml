@@ -1,0 +1,9 @@
+server:
+  host: "localhost"
+  port: 8080
+
+redis:
+  addr: "redis:6379"
+  password: ""
+  db: 0
+  ttl_seconds: 300
